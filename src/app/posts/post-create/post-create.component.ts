@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 import { Post } from '../post.model';
 
@@ -15,11 +16,14 @@ export class PostCreateComponent {
   @Output() postCreate = new EventEmitter<Post>();
 
   // save button
-  onAddPost() {
+  onAddPost(form: NgForm) {
+    // validation
+    if (form.invalid) {
+    }
     // new post type here
     const post: Post = {
-      title: this.enteredTitle,
-      content: this.enteredContent,
+      title: form.value.title,
+      content: form.value.content,
     };
 
     // post goes to app-post-list -> how to listen? with Output -> app component onPostAdded
