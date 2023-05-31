@@ -33,5 +33,6 @@ export class PostCreateComponent {
     // -> post-list bind the post to get it with @Input
     // this.postCreate.emit(post);
     this.postsService.addPost(form.value.title, form.value.content);
+    form.resetForm();
   }
 }
