@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-post-create',
@@ -6,11 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./post-create.component.css'],
 })
 export class PostCreateComponent {
-  enteredValue = '';
-  newPost = 'hello';
+  enteredTitle = '';
+  enteredContent = '';
+
+  // post create event
+  @Output() postCreate = new EventEmitter();
 
   // save button
   onAddPost() {
-    this.newPost = this.enteredValue;
+    // new post type here
+    const post = { title: this.enteredTitle, content: this.enteredContent };
+
+    // post goes to app-post-list -> how to listen? with Output -> app component onPostAdded
+    // -> post-list bind the post to get it with @Input
+    this.postCreate.emit(post);
   }
 }
