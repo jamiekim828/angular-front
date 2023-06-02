@@ -32,7 +32,11 @@ export class PostCreateComponent {
     // post goes to app-post-list -> how to listen? with Output -> app component onPostAdded
     // -> post-list bind the post to get it with @Input
     // this.postCreate.emit(post);
-    this.postsService.addPost(form.value.title, form.value.content);
+    this.postsService.addPost(
+      form.value.id,
+      form.value.title,
+      form.value.content
+    );
     form.resetForm();
   }
 }

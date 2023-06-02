@@ -5,8 +5,16 @@ const app = express();
 
 // middleware
 app.use((req, res, next) => {
-  // you will see this in the terminal console
-  console.log("First middleware");
+  // for cors
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PATCH, DELETE, PUT, OPTIONS"
+  );
   next();
 });
 
