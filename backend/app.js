@@ -1,7 +1,11 @@
 const express = require("express");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // middleware
 app.use((req, res, next) => {
@@ -23,8 +27,14 @@ app.use((req, res, next) => {
 //   res.send("Hello from express :)");
 //   next();
 // });
+app.post("/api/posts", (req, res, next) => {
+  const post = req.body;
+  console.log(post);
+  res.status(201).json({ message: "Post is successfully added." });
+  next();
+});
 
-app.use("/api/post", (req, res, next) => {
+app.get("/api/posts", (req, res, next) => {
   const posts = [
     {
       id: "randomId1",
