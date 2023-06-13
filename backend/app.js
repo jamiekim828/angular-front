@@ -27,14 +27,15 @@ app.use((req, res, next) => {
 //   res.send("Hello from express :)");
 //   next();
 // });
-app.post("/api/posts", (req, res, next) => {
+
+app.post("/api/post", (req, res, next) => {
   const post = req.body;
   console.log(post);
   res.status(201).json({ message: "Post is successfully added." });
   next();
 });
 
-app.get("/api/posts", (req, res, next) => {
+app.get("/api/post", (req, res, next) => {
   const posts = [
     {
       id: "randomId1",
